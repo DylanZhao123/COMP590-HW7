@@ -1,6 +1,0 @@
-.claude/
-instructions/
-*.exe
-*.pdb
-main
-target/
