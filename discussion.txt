@@ -1,3 +1,4 @@
+Teammates: Qianlin Cui, Dylan Zhao
 Discussion: Recursion and Stack Overflow
 
 Each recursive call to collatz_length pushes a new stack frame containing the function's parameters and return address. For a number with a long Collatz sequence (e.g., 27 takes 112 steps), this creates 112 nested stack frames.
