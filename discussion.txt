@@ -1,0 +1,7 @@
+Discussion: Recursion and Stack Overflow
+
+Each recursive call to collatz_length pushes a new stack frame containing the function's parameters and return address. For a number with a long Collatz sequence (e.g., 27 takes 112 steps), this creates 112 nested stack frames.
+
+The risk is stack overflow if the recursion depth exceeds the stack size limit. A loop wouldn't have this problem since it reuses the same stack frame on each iteration.
+
+Rust helps with tail call optimization when compiled with -O flag. The longest_collatz helper function uses tail recursion (recursive call is the last operation), which the compiler can optimize into a loop at the assembly level. However, collatz_length is not tail recursive since it adds 1 after the recursive call, so each call still needs its own stack frame. With optimization enabled, this is generally safe for reasonable inputs, but without optimization it can overflow on large test cases.
